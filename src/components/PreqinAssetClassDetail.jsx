@@ -15,17 +15,18 @@ const PreqinAssetClassDetail = () => {
   const { state: investor } = useLocation();
   const { investorId, assetClass } = useParams();
   const { state } = React.useContext(Context);
-  console.log("data ", data);
+
+  const [active, setActive] = React.useState(1);
   const navigate = useNavigate();
   React.useEffect(() => {
     setDisplayData(data.slice(0, 5));
+    setActive(1);
   }, [data]);
   React.useEffect(() => {
     navigate(`/investors/${investorId}/assetclass/${assetClass}`, {
       state: investor,
     });
   }, [investorId, assetClass]);
-  const [active, setActive] = React.useState(1);
   const changePage = (page) => {
     setDisplayData(data.slice((page - 1) * 5, (page - 1) * 5 + 5));
     setActive(page);
