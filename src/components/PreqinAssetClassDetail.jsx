@@ -1,25 +1,49 @@
 import React from "react";
-import { useLoaderData, useLocation, useNavigate, useParams } from "react-router-dom";
+import {
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import DataTable from "../ui/DataTable";
 import { Context } from "../reducer/Reducer";
+import PaginationComponent from "../ui/PaginationComponent";
 
 const PreqinAssetClassDetail = () => {
   const { data } = useLoaderData();
-  const {state: investor} = useLocation();
+  const [displayData, setDisplayData] = React.useState(data.slice(0, 5));
+  const { state: investor } = useLocation();
   const { investorId, assetClass } = useParams();
   const { state } = React.useContext(Context);
-
+  console.log("data ", data);
   const navigate = useNavigate();
   React.useEffect(() => {
-    navigate(`/investors/${investorId}/assetclass/${assetClass}`, {state: investor});
+    setDisplayData(data.slice(0, 5));
+  }, [data]);
+  React.useEffect(() => {
+    navigate(`/investors/${investorId}/assetclass/${assetClass}`, {
+      state: investor,
+    });
   }, [investorId, assetClass]);
-
+  const [active, setActive] = React.useState(1);
+  const changePage = (page) => {
+    setDisplayData(data.slice((page - 1) * 5, (page - 1) * 5 + 5));
+    setActive(page);
+  };
   return (
-    <DataTable
-      data={data}
-      column={state.colsForAsset}
-      rowClickAction={() => {}}
-    />
+    <>
+      <DataTable
+        data={displayData}
+        column={state.colsForAsset}
+        rowClickAction={() => {}}
+      />
+      <PaginationComponent
+        start={1}
+        to={Math.ceil(data.length / 5)}
+        active={active}
+        changePage={changePage}
+      />
+    </>
   );
 };
 
