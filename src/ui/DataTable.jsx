@@ -18,7 +18,7 @@ const DataTable = (props) => {
       <tbody>
         {data.map((investor) => (
           <tr
-            onClick={() => rowClickAction(investor.firm_id)}
+            onClick={() => rowClickAction(investor)}
             style={{ cursor: "pointer" }}
           >
             {column.map((col) => (

@@ -14,7 +14,9 @@ const PreqinInvestorsDataTable = () => {
     <DataTable
       data={data}
       column={state.colsForInvestors}
-      rowClickAction={(firm_id) => navigate(`/investors/${firm_id}`)}
+      rowClickAction={(investor) =>
+        navigate(`/investors/${investor.firm_id}`, { state: investor })
+      }
     />
   );
 };
