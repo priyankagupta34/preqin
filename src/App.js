@@ -1,13 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
-import DataTable from './components/DataTable';
+import logo from "./logo.svg";
+import "./App.css";
+import DashboardDisplay from "./reducer/Reducer";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
     <div className="App">
-      <header>Preqin Data Arena</header>
-      <section>
-        <DataTable />
+      <h1>Preqin Data Arena</h1>
+      <section style={{marginTop: 40}}>
+        <DashboardDisplay />
       </section>
     </div>
   );
