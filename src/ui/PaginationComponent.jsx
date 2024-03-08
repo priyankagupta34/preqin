@@ -1,7 +1,6 @@
 import Pagination from "react-bootstrap/Pagination";
 
 const PaginationComponent = ({ start, to, active, changePage }) => {
-  console.log({ start, to, active, changePage });
   let items = [];
   for (let number = start; number <= to; number++) {
     items.push(
@@ -15,7 +14,10 @@ const PaginationComponent = ({ start, to, active, changePage }) => {
     );
   }
   return (
-    <div style={{ display: "flex", flexDirection: "row-reverse" }}>
+    <div
+      style={{ display: "flex", flexDirection: "row-reverse" }}
+      data-testid="pagination"
+    >
       {" "}
       <Pagination size="sm">{items}</Pagination>
     </div>

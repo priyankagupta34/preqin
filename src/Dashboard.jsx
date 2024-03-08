@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import DashboardContext, { Context } from "./reducer/Reducer";
 import React from "react";
 import PreqinInvestorsDataTable from "./components/PreqinInvestorsDataTable";
 import { getCommitment, getInvestors } from "./service/PrequinService";

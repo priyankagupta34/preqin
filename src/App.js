@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import DashboardDisplay from "./reducer/Reducer";
 import 'bootstrap/dist/css/bootstrap.min.css';

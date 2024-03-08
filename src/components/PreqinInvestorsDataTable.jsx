@@ -11,13 +11,17 @@ const PreqinInvestorsDataTable = () => {
   const { state } = React.useContext(Context);
 
   return (
-    <DataTable
-      data={data}
-      column={state.colsForInvestors}
-      rowClickAction={(investor) =>
-        navigate(`/investors/${investor.firm_id}`, { state: investor })
-      }
-    />
+    <>
+      <small><b>Click rows to find out more</b></small>
+      <DataTable
+        data={data}
+        showPagination
+        column={state.colsForInvestors}
+        rowClickAction={(investor) =>
+          navigate(`/investors/${investor.firm_id}`, { state: investor })
+        }
+      />
+    </>
   );
 };
 
